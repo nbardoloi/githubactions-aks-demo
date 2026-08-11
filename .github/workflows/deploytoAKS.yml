@@ -57,11 +57,11 @@ jobs:
 
     - name: Deploy to Kubernetes cluster
       run: |
-        kubectl apply -f k8s/deployment.yml
-        kubectl apply -f k8s/service.yml
-        kubectl set image deployment/<your-deployment-name> `
-          <your-container-name>=${{ secrets.DOCKER_LOGIN }}/githubactions-aks-demo:${{ github.sha }}
-        
+            kubectl apply -f k8s/deployment.yml
+            kubectl apply -f k8s/service.yml
+            kubectl set image deployment/githubactions-aks-demo `
+            githubactions-aks-demo=${{ secrets.DOCKER_LOGIN }}/githubactions-aks-demo:${{ github.sha }}
+      
     
         
     
