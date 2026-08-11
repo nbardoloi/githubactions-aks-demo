@@ -11,6 +11,9 @@ spec:
       labels:
         app: githubactions-aks-demo
     spec:
+       spec:
+      imagePullSecrets:
+      - name: docker-image-pull-secret
       containers:
       - name: githubactions-aks-demo
         image: nbardoloi/githubactions-aks-demo
