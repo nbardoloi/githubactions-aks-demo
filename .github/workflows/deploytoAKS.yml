@@ -40,11 +40,8 @@ jobs:
     - name: docker login
       run: docker login --username '${{secrets.DOCKER_LOGIN}}' --password '${{secrets.DOCKER_PASSWORD}}'
       
-    - name: tag docker image
-      run: docker tag githubactions-aks-demo:'${{github.sha}}' '${{secrets.DOCKER_LOGIN}}'/githubactions-aks-demo:'${{github.sha}}'
-    
-    - name: push docker image
-      run: docker push '${{secrets.DOCKER_LOGIN}}'/githubactions-aks-demo:'${{github.sha}}'
+    - name: tag docker image        # <-- this is just a label for the step in the UI
+      run: docker tag githubactions-aks-demo:${{ github.sha }} ${{ secrets.DOCKER_LOGIN }}/githubactions-aks-demo:${{ github.sha }}
       
     - name: Azure Kubernetes set context
       uses: Azure/aks-set-context@v1
